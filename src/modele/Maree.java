@@ -1,7 +1,7 @@
 package modele;
 
 public class Maree {
-	private String heure; //TODO Classe heure
+	private int heure; //TODO Classe heure
 	private float hauteur;
 	
 	// Si aucun coef est disponible, coef = -1 
@@ -13,7 +13,7 @@ public class Maree {
 		if (_heure.equals("--:--")) {
 			existe = false;
 		} else {
-			this.heure = _heure;
+			this.heure = Integer.parseInt(_heure);
 			this.hauteur = Float.parseFloat(_hauteur);
 			this.coef = Integer.parseInt(_coef);
 			existe = true;
@@ -24,15 +24,23 @@ public class Maree {
 		if (_heure.equals("--:--")) {
 			existe = false;
 		} else {
-			this.heure = _heure;
+			this.heure = Integer.parseInt(_heure);
 			this.hauteur = Float.parseFloat(_hauteur);
 			this.coef = -1;
 			existe = true;
 		}
 	}
 	
+	public Maree(int _heure, String _hauteur) {
+		this.heure = _heure;
+		this.hauteur = Float.parseFloat(_hauteur);
+		this.coef = -1;
+		existe = true;
+	}
+	
 	public String toString() {
 		if (!existe) return "--";
+		if (coef == -1) return heure + " " + hauteur + "m";
 		return heure + " " + hauteur + "m " + coef;
 	}
 }

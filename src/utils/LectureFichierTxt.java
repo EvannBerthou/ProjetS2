@@ -10,6 +10,7 @@ import java.util.StringTokenizer;
 
 import modele.Maree;
 import modele.MareeDate;
+import modele.MareeHauteur;
  
 
 public class LectureFichierTxt {
@@ -52,5 +53,75 @@ public class LectureFichierTxt {
 			// Traitement de l�erreur 
 		}
 		return mareeDates;
+	}
+	
+	/**
+	 * Est utilisé afin de parser les données gratuites.
+	 * @param fichier
+	 * @return
+	 */
+	public static ArrayList<MareeHauteur> lectureMareeHauteur(File fichier) {
+		ArrayList<MareeHauteur> mareeHauteur = new ArrayList<MareeHauteur>();
+		try {
+			
+			BufferedReader buffer = new BufferedReader (
+					new InputStreamReader (new FileInputStream (fichier)));
+			String ligneLue;
+
+			Maree[] marees = new Maree[24];
+			String heure = null;
+			String date = null;
+			String hauteur = null;
+			
+			while ((ligneLue = buffer.readLine()) != null) {
+				// On ignore les # qui sont en en-tête
+				if (ligneLue.startsWith("#")) continue;
+			
+				StringTokenizer decoup = new StringTokenizer(ligneLue,";");
+				
+				String nouvelleDate = null;
+				String nouvelleHeure = null;
+				
+				if (decoup.hasMoreTokens()) {
+					String dateEtHeure = decoup.nextToken();
+					//On sépare la date et l'heure
+					String[] tempsDecoup = dateEtHeure.split(" ");
+					nouvelleDate = tempsDecoup[0];
+					//Le nouveau temps sous forme de hh:mm:ss
+					String nouveauTemps = tempsDecoup[1];
+					//On récupère uniquement l'heure
+					nouvelleHeure = nouveauTemps.split(":")[0];
+
+					//Lors de la première lecture, les dates et les heures sont nulles
+					if (date == null) date = nouvelleDate;
+					if (heure == null) heure = nouvelleHeure;
+				}
+				
+				//On récupère la valeur, qui correspond à la hauteur
+				if (decoup.hasMoreTokens()) {
+					hauteur = decoup.nextToken();
+				}
+				
+				if (!nouvelleHeure.equals(heure)) {
+					marees[Integer.parseInt(heure)] = new Maree(heure, hauteur);
+					heure = nouvelleHeure;
+				}	
+				
+				if (!nouvelleDate.equals(date)) {
+					mareeHauteur.add(new MareeHauteur(date, marees));
+					marees = new Maree[24];
+					date = nouvelleDate;
+				}
+			}	
+			buffer.close();
+			
+			// On ajoute la dernière date qui était en cours de traitement lorsque le fichier a été lu en entier
+			marees[Integer.parseInt(heure)] = new Maree(heure, hauteur);
+			mareeHauteur.add(new MareeHauteur(date, marees));
+		}
+		catch (IOException parException) { 
+			// Traitement de l'érreur 
+		}
+		return mareeHauteur;
 	}
 }
