@@ -8,7 +8,6 @@ public class ModeleTableHauteurs extends DefaultTableModel {
 		super();
 		setColumnCount(6);
 		setRowCount(8);
-
 		int row = 0;
 		int column = 0;
 		for (Maree m : marees) {

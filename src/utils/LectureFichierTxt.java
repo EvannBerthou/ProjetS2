@@ -6,12 +6,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import modele.Heure;
 import modele.Maree;
-import modele.MareeDate;
-import modele.MareeHauteur;
  
 
 public class LectureFichierTxt {
@@ -20,10 +19,9 @@ public class LectureFichierTxt {
 	 * @param fichier
 	 * @return
 	 */
-	public static ArrayList<MareeDate> lectureMareeDate(File fichier) {
-		ArrayList<MareeDate> mareeDates = new ArrayList<MareeDate>();
+	public static HashMap<String, Maree[]> lectureMareeDate(File fichier) {
+		HashMap<String, Maree[]> res = new HashMap<String, Maree[]>();
 		try {
-			
 			BufferedReader buffer = new BufferedReader (
 					new InputStreamReader (new FileInputStream (fichier)));
 			String ligneLue;
@@ -40,20 +38,19 @@ public class LectureFichierTxt {
 					donnees[i] = token;
 				}
 
-
 				Maree[] marees = new Maree[4];
 				marees[0] = new Maree(new Heure(donnees[1]), donnees[2], donnees[3]);  //Première PM
 				marees[1] = new Maree(new Heure(donnees[4]), donnees[5], donnees[6]);  //Deuxième PM
 				marees[2] = new Maree(new Heure(donnees[7]), donnees[8]); 			   //Première BM
 				marees[3] = new Maree(new Heure(donnees[9]), donnees[10]);  		   //Deuxième BM
-				mareeDates.add(new MareeDate(donnees[0], marees));
+				res.put(donnees[0], marees);
 			}	
 			buffer.close();
 		}
 		catch (IOException parException) { 
 			// Traitement de l�erreur 
 		}
-		return mareeDates;
+		return res;
 	}
 	
 	/**
@@ -61,8 +58,8 @@ public class LectureFichierTxt {
 	 * @param fichier
 	 * @return
 	 */
-	public static ArrayList<MareeHauteur> lectureMareeHauteur(File fichier) {
-		ArrayList<MareeHauteur> mareeHauteur = new ArrayList<MareeHauteur>();
+	public static HashMap<String, Maree[]> lectureMareeHauteur(File fichier) {
+		HashMap<String, Maree[]> res = new HashMap<String, Maree[]>();
 		try {
 			
 			BufferedReader buffer = new BufferedReader (
@@ -109,20 +106,20 @@ public class LectureFichierTxt {
 				}	
 				
 				if (!nouvelleDate.equals(date)) {
-					date = nouvelleDate;
-					mareeHauteur.add(new MareeHauteur(date, marees));
+					res.put(date, marees);
 					marees = new Maree[24];
+					date = nouvelleDate;
 				}
 			}	
 			buffer.close();
 			
 			// On ajoute la dernière date qui était en cours de traitement lorsque le fichier a été lu en entier
 			marees[heure.getHeure()] = new Maree(heure, hauteur);
-			mareeHauteur.add(new MareeHauteur(date, marees));
+			res.put(date, marees);
 		}
 		catch (IOException parException) { 
 			// Traitement de l'érreur 
 		}
-		return mareeHauteur;
+		return res;
 	}
 }
