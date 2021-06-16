@@ -30,4 +30,12 @@ public class Maree {
 		if (coef == -1) return heure + " " + hauteur + "m";
 		return heure + " " + hauteur + "m " + coef;
 	}
+	
+	public Heure getHeure() {
+		return heure;
+	}
+	
+	public float getHauteur() {
+		return hauteur;
+	}
 }

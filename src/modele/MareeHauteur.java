@@ -18,4 +18,8 @@ public class MareeHauteur {
 		
 		return res;
 	}
+	
+	public Maree[] getMarees() {
+		return marees;
+	}
 }

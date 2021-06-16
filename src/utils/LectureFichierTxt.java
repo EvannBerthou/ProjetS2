@@ -103,15 +103,15 @@ public class LectureFichierTxt {
 					hauteur = decoup.nextToken();
 				}
 				
-				if (!nouvelleHeure.equals(heure)) {
-					marees[heure.getHeure()] = new Maree(heure, hauteur);
+				if (nouvelleHeure.getHeure() != heure.getHeure()) {
 					heure = nouvelleHeure;
+					marees[heure.getHeure()] = new Maree(heure, hauteur);
 				}	
 				
 				if (!nouvelleDate.equals(date)) {
+					date = nouvelleDate;
 					mareeHauteur.add(new MareeHauteur(date, marees));
 					marees = new Maree[24];
-					date = nouvelleDate;
 				}
 			}	
 			buffer.close();

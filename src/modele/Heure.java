@@ -29,10 +29,13 @@ public class Heure {
 	}
 	
 	public String toString() {
+		// Si l'heure n'est pas valide
 		if (heure == -1) {
 			return "--:--";
-		} 
-		return heure + ":" + minute;
+		}
+		//Le format permet de convertir l'int vers un string tout en ajouant des 0
+		// afin d'obtenir une heure sous la forme 00:00 au lieu de 0:0
+		return String.format("%02d", heure) + ":" + String.format("%02d", minute);
 	}
 	
 	public boolean equals(Heure cmp) {

@@ -3,12 +3,16 @@ package vue;
 import java.io.File;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 import modele.MareeHauteur;
 import utils.LectureFichierTxt;
 
-public class Client {
+public class Client extends JFrame {
 
-	public static void main(String[] args) {
+	public Client() {
+		super("Titre");
+		
 		File file = new File("data/paimpol.txt");
 		/*ArrayList<MareeDate> marees = LectureFichierTxt.lectureMareeDate(file);
 		for (MareeDate m : marees) {
@@ -20,5 +24,16 @@ public class Client {
 		for (MareeHauteur m : marees) {
 			System.out.println(m.toString());
 		}
+		
+		PanelHauteurs panel = new PanelHauteurs(marees);
+		setContentPane(panel);
+	    setSize(800,600);
+		setVisible(true);
+		
+	}
+	
+	public static void main(String[] args) {
+		new Client();
+
 	}
 }
