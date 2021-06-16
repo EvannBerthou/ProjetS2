@@ -3,7 +3,6 @@ package vue;
 import java.io.File;
 import java.util.ArrayList;
 
-import modele.MareeDate;
 import modele.MareeHauteur;
 import utils.LectureFichierTxt;
 
