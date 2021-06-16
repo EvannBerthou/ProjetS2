@@ -44,7 +44,7 @@ public class LectureFichierTxt {
 				Maree[] marees = new Maree[4];
 				marees[0] = new Maree(new Heure(donnees[1]), donnees[2], donnees[3]);  //Première PM
 				marees[1] = new Maree(new Heure(donnees[4]), donnees[5], donnees[6]);  //Deuxième PM
-				marees[2] = new Maree(new Heure(donnees[4]), donnees[8]); 			   //Première BM
+				marees[2] = new Maree(new Heure(donnees[7]), donnees[8]); 			   //Première BM
 				marees[3] = new Maree(new Heure(donnees[9]), donnees[10]);  		   //Deuxième BM
 				mareeDates.add(new MareeDate(donnees[0], marees));
 			}	

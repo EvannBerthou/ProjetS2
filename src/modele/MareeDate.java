@@ -1,7 +1,5 @@
 package modele;
 
-import java.util.ArrayList;
-
 public class MareeDate {
 	private String date; //TODO: Classe date
 	private Maree[] marees;
@@ -17,5 +15,9 @@ public class MareeDate {
 			res += m.toString() + " | ";
 		}
 		return res;
+	}
+	
+	public Maree[] getMarees() {
+		return marees;
 	}
 }

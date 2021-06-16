@@ -6,17 +6,16 @@ public class Maree {
 	
 	// Si aucun coef est disponible, coef = -1 
 	private int coef; 
-	
-	
+
 	public Maree(Heure _heure, String _hauteur, String _coef) {
 		this.heure = _heure;
-		this.hauteur = Float.parseFloat(_hauteur);
-		this.coef = Integer.parseInt(_coef);
+		setHauteur(_hauteur);
+		setCoef(_coef);
 	}
 	
 	public Maree(Heure _heure, String _hauteur) {
 		this.heure = _heure;
-		this.hauteur = Float.parseFloat(_hauteur);
+		setHauteur(_hauteur);
 		this.coef = -1;
 	}
 	
@@ -27,8 +26,13 @@ public class Maree {
 	}
 	
 	public String toString() {
-		if (coef == -1) return heure + " " + hauteur + "m";
-		return heure + " " + hauteur + "m " + coef;
+		String res = heure.toString();
+		if (hauteur == -1) res += " --.--";
+		else res += " " + hauteur + "m";
+		
+		if (coef == -1) res += " --";
+		else res += " " + coef;
+		return res;
 	}
 	
 	public Heure getHeure() {
@@ -37,5 +41,35 @@ public class Maree {
 	
 	public float getHauteur() {
 		return hauteur;
+	}
+	
+	public String[] getParts() {
+		String[] parts = new String[3];
+		if (heure.getHeure() == -1) parts[0] = "--.--";
+		else parts[0] = heure.toString();
+		
+		if (getHauteur() == -1) parts[1] = "---";
+		else parts[1] = String.valueOf(getHauteur());
+		
+		if (coef == -1) parts[2] = "--.--";
+		else parts[2] = String.valueOf(coef);
+		
+		return parts;
+	}
+	
+	private void setHauteur(String str) {
+		if (str.equals("--.--")) {
+			this.hauteur = -1;
+		} else {
+			this.hauteur = Float.parseFloat(str);
+		}
+	}
+	
+	private void setCoef(String str) {
+		if (str.equals("---")) {
+			this.coef = -1;
+		} else {
+			this.coef = Integer.parseInt(str);
+		}
 	}
 }
