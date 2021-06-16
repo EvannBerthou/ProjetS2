@@ -2,6 +2,8 @@ package modele;
 
 import javax.swing.table.DefaultTableModel;
 
+import constantes.ConstantesCouleurs;
+
 public class ModeleTableCoef extends DefaultTableModel {
 	public ModeleTableCoef(Maree[] marees) {
 		super();
@@ -10,7 +12,7 @@ public class ModeleTableCoef extends DefaultTableModel {
 
 		setValueAt("Heure", 	  0, 1);
 		setValueAt("Hauteur(m)",  0, 2);
-		setValueAt("coefficient", 0, 3);
+		setValueAt("Coefficient", 0, 3);
 		
 		setValueAt("PM", 1, 0);
 		setValueAt("PM", 2, 0);
