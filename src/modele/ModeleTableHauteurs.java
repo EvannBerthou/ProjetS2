@@ -22,5 +22,9 @@ public class ModeleTableHauteurs extends DefaultTableModel {
 				column = 0;
 			}
 		}
-	}	
+	}
+	
+	public boolean isCellEditable(int row, int column) {
+		return false;
+	}
 }
