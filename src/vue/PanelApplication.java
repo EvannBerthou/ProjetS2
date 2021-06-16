@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import constantes.ConstantesCouleurs;
+import modele.Date;
 import modele.Maree;
 import utils.LectureFichierTxt;
 
@@ -20,12 +21,12 @@ public class PanelApplication extends JPanel {
 
 		File file;
 		file = new File("data/paimpol.txt");
-		HashMap<String, Maree[]> mareesCoefs = LectureFichierTxt.lectureMareeDate(file);
-		PanelCoefs panelCoefs = new PanelCoefs(mareesCoefs.get("2021-06-02"));
+		HashMap<Date, Maree[]> mareesCoefs = LectureFichierTxt.lectureMareeDate(file);
+		PanelCoefs panelCoefs = new PanelCoefs(mareesCoefs.get(mareesCoefs.keySet().iterator().next()));
 
 		file = new File("data/st-nazaire.txt");
-		HashMap<String, Maree[]> mareesHauteurs = LectureFichierTxt.lectureMareeHauteur(file);
-		PanelHauteurs panelHauteurs = new PanelHauteurs(mareesHauteurs.get("05/01/2021"));
+		HashMap<Date, Maree[]> mareesHauteurs = LectureFichierTxt.lectureMareeHauteur(file);
+		PanelHauteurs panelHauteurs = new PanelHauteurs(mareesHauteurs.get(mareesHauteurs.keySet().iterator().next()));
 
 		
 		JPanel panelCentre = new JPanel(new BorderLayout());

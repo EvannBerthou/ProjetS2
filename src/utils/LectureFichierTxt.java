@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
+import modele.Date;
 import modele.Heure;
 import modele.Maree;
  
@@ -19,8 +20,8 @@ public class LectureFichierTxt {
 	 * @param fichier
 	 * @return
 	 */
-	public static HashMap<String, Maree[]> lectureMareeDate(File fichier) {
-		HashMap<String, Maree[]> res = new HashMap<String, Maree[]>();
+	public static HashMap<Date, Maree[]> lectureMareeDate(File fichier) {
+		HashMap<Date, Maree[]> res = new HashMap<Date, Maree[]>();
 		try {
 			BufferedReader buffer = new BufferedReader (
 					new InputStreamReader (new FileInputStream (fichier)));
@@ -43,7 +44,7 @@ public class LectureFichierTxt {
 				marees[1] = new Maree(new Heure(donnees[4]), donnees[5], donnees[6]);  //Deuxième PM
 				marees[2] = new Maree(new Heure(donnees[7]), donnees[8]); 			   //Première BM
 				marees[3] = new Maree(new Heure(donnees[9]), donnees[10]);  		   //Deuxième BM
-				res.put(donnees[0], marees);
+				res.put(new Date(donnees[0]), marees);
 			}	
 			buffer.close();
 		}
@@ -58,8 +59,8 @@ public class LectureFichierTxt {
 	 * @param fichier
 	 * @return
 	 */
-	public static HashMap<String, Maree[]> lectureMareeHauteur(File fichier) {
-		HashMap<String, Maree[]> res = new HashMap<String, Maree[]>();
+	public static HashMap<Date, Maree[]> lectureMareeHauteur(File fichier) {
+		HashMap<Date, Maree[]> res = new HashMap<Date, Maree[]>();
 		try {
 			
 			BufferedReader buffer = new BufferedReader (
@@ -68,7 +69,7 @@ public class LectureFichierTxt {
 
 			Maree[] marees = new Maree[24];
 			Heure heure = null;
-			String date = null;
+			Date date = null;
 			String hauteur = null;
 			
 			while ((ligneLue = buffer.readLine()) != null) {
@@ -77,14 +78,14 @@ public class LectureFichierTxt {
 			
 				StringTokenizer decoup = new StringTokenizer(ligneLue,";");
 				
-				String nouvelleDate = null;
+				Date nouvelleDate = null;
 				Heure nouvelleHeure = null;
 				
 				if (decoup.hasMoreTokens()) {
 					String dateEtHeure = decoup.nextToken();
 					//On sépare la date et l'heure
 					String[] tempsDecoup = dateEtHeure.split(" ");
-					nouvelleDate = tempsDecoup[0];
+					nouvelleDate = new Date(tempsDecoup[0]);
 					//Le nouveau temps sous forme de hh:mm:ss
 					String nouveauTemps = tempsDecoup[1];
 					//On récupère uniquement l'heure
@@ -105,7 +106,7 @@ public class LectureFichierTxt {
 					marees[heure.getHeure()] = new Maree(heure, hauteur);
 				}	
 				
-				if (!nouvelleDate.equals(date)) {
+				if (nouvelleDate.compareTo(date) != 0) {
 					res.put(date, marees);
 					marees = new Maree[24];
 					date = nouvelleDate;
