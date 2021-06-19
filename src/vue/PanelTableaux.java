@@ -52,4 +52,8 @@ public class PanelTableaux extends JPanel {
 		// Si aucune donnée n'est disponible
 		table.clear();
 	}
+
+	public Port getPort(String nom) {
+		return ports.get(nom);
+	}
 }

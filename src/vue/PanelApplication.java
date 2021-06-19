@@ -3,6 +3,7 @@ package vue;
 import java.awt.BorderLayout;
 import java.io.File;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import javax.swing.JPanel;
 
@@ -24,6 +25,7 @@ public class PanelApplication extends JPanel {
 		
 		JPanel panelCentre = new JPanel(new BorderLayout());
 		panelCentre.setBackground(ConstantesCouleurs.BLEU);
+		
 		PanelCalendrier panelCalendrier = new PanelCalendrier();
 		panelCentre.add(panelCalendrier, BorderLayout.CENTER);
 		
@@ -37,7 +39,7 @@ public class PanelApplication extends JPanel {
 		
 		new Controleur(panelSud, panelListePorts, panelCalendrier);
 	}
-	
+
 	/**
 	 * Charge tous les ports qui sont dans les dossiers correspondant
 	 * data/gratuit ou data/payant
@@ -83,4 +85,14 @@ public class PanelApplication extends JPanel {
 	 */
 	private void sauvegarderPorts() {
 	}
+	
+	private HashSet<Date> getDatesActives(HashMap<String, Port> _ports) {
+		HashSet<Date> dates = new HashSet<Date>();
+		for (Port p : _ports.values()) {
+			dates.addAll(p.getDates());
+		}
+		System.out.println(dates);
+		return dates;
+	}
+
 }

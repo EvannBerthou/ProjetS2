@@ -1,6 +1,7 @@
 package modele;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class Port {
 	private HashMap<Date, Maree[]> mareesCoefs = new HashMap<Date, Maree[]>();
@@ -28,4 +29,16 @@ public class Port {
 		return null;
 	}
 
+	public HashSet<Date> getDates() {
+		HashSet<Date> dates = new HashSet<Date>();
+		for (Date d : mareesCoefs.keySet()) {
+			dates.add(d);
+		}
+		
+		for (Date d : mareesHauteurs.keySet()) {
+			dates.add(d);
+		}
+		
+		return dates;
+	}
 }

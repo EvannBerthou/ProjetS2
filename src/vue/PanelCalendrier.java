@@ -11,11 +11,15 @@ import constantes.ConstantesCalendrier;
 import constantes.ConstantesCouleursFontes;
 import controleur.Controleur;
 import modele.Date;
+import modele.Port;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 import java.awt.event.ActionEvent;
 
 /**
@@ -29,7 +33,7 @@ public class PanelCalendrier extends JPanel implements ActionListener, Constante
 	 * Le Panel au centre du BorderLayout. 
 	 * Affiche la liste des dates sous forme de boutons
 	 */
-	JPanel panelCentre = new JPanel ( ) ; 
+	JPanel panelCentre = new JPanel(); 
 
 	/**
 	 * Layout du panelCentre
@@ -38,7 +42,7 @@ public class PanelCalendrier extends JPanel implements ActionListener, Constante
 	/**
 	 * Liste des boutons pour changer le calendrier
 	 */
-	JButton [] tabBoutons = new JButton [INTITULES_BOUTONS.length];
+	JButton [] tabBoutons = new JButton[INTITULES_BOUTONS.length];
 
 	/**
 	 * Nom du mois actuellement affiché
@@ -53,34 +57,34 @@ public class PanelCalendrier extends JPanel implements ActionListener, Constante
 	/**
 	 * Liste de tous les mois de l'année
 	 */
-	PanelMois [] panelsMois;
+	PanelMois[] panelsMois;
 
 	/**
 	 * Constructeur du PanelCalendrier
+	 * @param ports 
 	 */
-	public  PanelCalendrier  ()	{
-
+	public PanelCalendrier() {
 		Date today = new Date();		 
 
-		this.setLayout (new BorderLayout (9,9)) ;  
-		JPanel panelSud = new JPanel ( ) ; 
-		this.add (panelSud, BorderLayout.SOUTH); 
+		this.setLayout (new BorderLayout (9,9));  
+		JPanel panelSud = new JPanel(); 
+		this.add(panelSud, BorderLayout.SOUTH); 
 
 		// panelCentre
-		this.add (panelCentre, BorderLayout.CENTER);
-		panelsMois = new PanelMois [MOIS.length];
+		this.add(panelCentre, BorderLayout.CENTER);
+		panelsMois = new PanelMois[MOIS.length];
 
 		panelCentre.setLayout (gestCard);
-		for (int indiceMois = 0 ; indiceMois< ConstantesCalendrier.MOIS.length ; indiceMois++)		{
+		for (int indiceMois = 0; indiceMois< ConstantesCalendrier.MOIS.length; indiceMois++) {
 			//JLabel etiq = new JLabel (MOIS[indiceMois]);  // pour test préalable
 			//panelCentre.add (etiq, MOIS[indiceMois]);
 
-			panelsMois [indiceMois] = new PanelMois (indiceMois+1);	 
-			panelCentre.add (panelsMois[indiceMois], MOIS[indiceMois]);
-
+			panelsMois[indiceMois] = new PanelMois(indiceMois+1);	 
+			panelCentre.add(panelsMois[indiceMois], MOIS[indiceMois]);
 		}
+		
 		// placer le mois courant en haut de la pile
-		gestCard.show (panelCentre, MOIS[today.getMois()-1]); 		
+		gestCard.show(panelCentre, MOIS[today.getMois()-1]); 		
 		indiceMois = today.getMois()-1;
 
 		// panelSud  
@@ -104,7 +108,6 @@ public class PanelCalendrier extends JPanel implements ActionListener, Constante
 		panelSud.setBackground(VANILLE);	
 		setBackground(VANILLE);
 		setPreferredSize(new Dimension (500,320));
-
 	}
 
 	/**
@@ -161,6 +164,12 @@ public class PanelCalendrier extends JPanel implements ActionListener, Constante
 	public void enregistreEcouter(Controleur controller) {
 		for (PanelMois mois : panelsMois) {
 			mois.enregistreEcouter(controller);
+		}
+	}
+	
+	public void desactiverDates(HashSet<Date> dates) {
+		for (PanelMois pm : panelsMois) {
+			pm.desactiverDates(dates);
 		}
 	}
 } 

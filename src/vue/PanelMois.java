@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 
 import javax.swing.JLabel;
@@ -16,6 +18,7 @@ import controleur.Controleur;
 import modele.BoutonDate;
 import modele.CalendrierDuMois;
 import modele.Date;
+import modele.Port;
 
 /**
  * Panel qui affiche toutes les dates d'un mois
@@ -36,8 +39,9 @@ public class PanelMois extends JPanel implements ActionListener,ConstantesCalend
 	/** 
 	 * Constructeur d'un PanelMois
 	 * @param mois Le mois avec lequel il faut créer les dates
+	 * @param ports 
 	 */
-	public PanelMois (int mois)  {
+	public PanelMois(int mois) {
 		Date today = new Date();
 		 
 		Collection <Date> datesDuMois = new CalendrierDuMois(mois,today.getAnnee()).getDates();
@@ -52,7 +56,7 @@ public class PanelMois extends JPanel implements ActionListener,ConstantesCalend
 		
 		Iterator <Date> iterateur = datesDuMois.iterator();
 		while (iterateur.hasNext()) {
-				Date date = iterateur.next() ;
+				Date date = iterateur.next();
 				boutonJour = new  BoutonDate (date);
 				
 				boutonJour.setActionCommand("DATE_MOIS");
@@ -67,8 +71,7 @@ public class PanelMois extends JPanel implements ActionListener,ConstantesCalend
 					boutonJour.setBackground(VERT);
 				}	
 				if (date.getMois()!=mois)
-					boutonJour.setForeground(BLEU);		
-					
+					boutonJour.setForeground(BLEU);
 		}		
 		
 		setBackground (VANILLE);
@@ -103,6 +106,16 @@ public class PanelMois extends JPanel implements ActionListener,ConstantesCalend
 	public void enregistreEcouter(Controleur controller) {
 		for (BoutonDate b : boutons) {
 			b.addActionListener(controller);
+		}
+	}
+	
+	/**
+	 * Désactiver les boutons où aucune donnée est disponible.
+	 * @param dates La liste des dates où le bouton est activé
+	 */
+	public void desactiverDates(HashSet<Date> dates) {
+		for (BoutonDate btn : boutons) {
+			btn.setEnabled(dates.contains(btn.getDate()));
 		}
 	}
 }

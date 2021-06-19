@@ -8,6 +8,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import modele.BoutonDate;
+import modele.Port;
 import vue.PanelCalendrier;
 import vue.PanelListePorts;
 import vue.PanelTableaux;
@@ -39,6 +40,9 @@ public class Controleur implements ActionListener, ListSelectionListener {
 			JList<String> list = (JList<String>)e.getSource();
 			String s = (String) list.getSelectedValue();
 			tableaux.setPort(s);
+			
+			Port port = tableaux.getPort(s);
+			calendrier.desactiverDates(port.getDates());
 		}
 	}
 }

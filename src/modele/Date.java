@@ -79,8 +79,9 @@ public class Date implements Comparable <Date>, ConstantesCalendrier {
 		return 0;	
 	}
 	
-	public boolean equals(Date parDate) {
-		return this.compareTo(parDate) == 0;
+	public boolean equals(Object parDate) { 
+		if (parDate.getClass() != getClass()) return false;
+		return this.compareTo((Date)parDate) == 0;
 	}
 
 	public Date dateDuLendemain ()   {	
@@ -134,5 +135,9 @@ public class Date implements Comparable <Date>, ConstantesCalendrier {
 
 	public boolean isToday() {
 		return new Date().compareTo(this) == 0;
+	}
+	
+	public int hashCode() {
+		return new java.util.Date(jour,mois,annee).hashCode();
 	}
 }  // class Date
