@@ -26,9 +26,7 @@ public class PanelApplication extends JPanel {
 		panelCentre.setBackground(ConstantesCouleurs.BLEU);
 		panelCentre.add(new JLabel("Calendrier"), BorderLayout.CENTER);
 		
-		JPanel panelSud = new JPanel(new BorderLayout());
-		panelSud.add(new PanelHauteurs(ports.get("st-nazaire").getHauteursDate(new Date(1, 1, 2021))), BorderLayout.CENTER);
-		panelSud.add(new PanelCoefs(ports.get("st-nazaire").getCoefsDate(new Date(1, 6, 2021))), BorderLayout.EAST);
+		JPanel panelSud = new PanelTableaux(ports);
 		panelCentre.add(panelSud, BorderLayout.SOUTH);
 		
 		PanelListePorts panelListePorts = new PanelListePorts(ports.keySet());
