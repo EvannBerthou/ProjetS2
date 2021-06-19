@@ -19,8 +19,9 @@ public class PanelApplication extends JPanel {
 	
 	public PanelApplication() {
 		setLayout(new BorderLayout());
-		chargerPorts();
-
+		chargerPorts();	
+		sauvegarderPorts();
+		
 		JPanel panelCentre = new JPanel(new BorderLayout());
 		panelCentre.setBackground(ConstantesCouleurs.BLEU);
 		panelCentre.add(new JLabel("Calendrier"), BorderLayout.CENTER);
@@ -40,35 +41,45 @@ public class PanelApplication extends JPanel {
 	 * Charge tous les ports qui sont dans les dossiers correspondant
 	 * data/gratuit ou data/payant
 	 */
-	private void chargerPorts() {
-		File file;
-		//TODO: Charger les ports depuis la liste des dossiers
-		final String[] portsPayant = new String[] { "paimpol" , "st-nazaire" };
-		final String[] portsGratuit = new String[] { "st-nazaire" };
-		
-		//TODO: Le nom du port devrait être récupérer depuis le fichier
-		for (String portName : portsPayant) {
-			file = new File("data/payant/" + portName + ".txt");
-			HashMap<Date, Maree[]> marees = LectureFichierTxt.lectureMareeDate(file);
-
+	private void chargerPorts() {		
+		File dossier;
+		dossier = new File("data/payant");
+		for (File cheminFichier : dossier.listFiles()) {
+			String nomPort = cheminFichier.getName();
+			// On retire le .txt à la fin
+			nomPort = nomPort.substring(0, nomPort.lastIndexOf('.'));
+			
+			HashMap<Date, Maree[]> marees = LectureFichierTxt.lectureMareeDate(cheminFichier);
+			
 			Port port = new Port();
 			port.setCoefs(marees);
-			ports.put(portName, port);
+			ports.put(nomPort, port);
 		}
-
-		for (String portName : portsGratuit) {
-			file = new File("data/gratuit/" + portName + ".txt");
-			HashMap<Date, Maree[]> marees = LectureFichierTxt.lectureMareeHauteur(file);
-			Port port;
+		
+		dossier = new File("data/gratuit");
+		for (File cheminFichier : dossier.listFiles()) {
+			String nomPort = cheminFichier.getName();
+			// On retire le .txt à la fin
+			nomPort = nomPort.substring(0, nomPort.lastIndexOf('.'));
 			
-			if (ports.containsKey(portName)) {
-				port = ports.get(portName);
+			HashMap<Date, Maree[]> marees = LectureFichierTxt.lectureMareeHauteur(cheminFichier);
+			
+			// Si un port avec le même nom existe déjà, alors on ajoute les données au lieu
+			// de créer un nouveau port (ce qui effacerais l'ancien).
+			Port port;
+			if (ports.containsKey(nomPort)) {
+				port = ports.get(nomPort);
 			} else {
 				port = new Port();
 			}
-
 			port.setHauteurs(marees);
-			ports.put(portName, port);
+			ports.put(nomPort, port);
 		}
+	}
+	
+	/**
+	 * TODO: Serializer les données chargés.
+	 */
+	private void sauvegarderPorts() {
 	}
 }
