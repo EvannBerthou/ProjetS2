@@ -10,15 +10,12 @@ import javax.swing.JPanel;
 import constantes.ConstantesCouleurs;
 import modele.Date;
 import modele.Maree;
+import modele.Port;
 import utils.LectureFichierTxt;
 
 public class PanelApplication extends JPanel {
 	
-	private HashMap<Date, Maree[]> mareesCoefs;
-	private PanelCoefs panelCoefs;
-	
-	private HashMap<Date, Maree[]> mareesHauteurs;
-	private PanelHauteurs panelHauteurs;
+	private HashMap<String, Port> ports = new HashMap<String, Port>();
 	
 	public PanelApplication() {
 		setLayout(new BorderLayout());
@@ -29,8 +26,8 @@ public class PanelApplication extends JPanel {
 		panelCentre.add(new JLabel("Calendrier"), BorderLayout.CENTER);
 		
 		JPanel panelSud = new JPanel(new BorderLayout());
-		panelSud.add(panelHauteurs, BorderLayout.CENTER);
-		panelSud.add(panelCoefs, BorderLayout.EAST);
+		panelSud.add(new PanelHauteurs(ports.get("st-nazaire").getHauteursDate(new Date(1, 1, 2021))), BorderLayout.CENTER);
+		panelSud.add(new PanelCoefs(ports.get("paimpol").getCoefsDate(new Date(1, 6, 2021))), BorderLayout.EAST);
 		panelCentre.add(panelSud, BorderLayout.SOUTH);
 		
 		PanelListePorts panelListePorts = new PanelListePorts();
@@ -45,14 +42,27 @@ public class PanelApplication extends JPanel {
 	 */
 	private void chargerPorts() {
 		File file;
+		//TODO: Charger les ports depuis la liste des dossiers
+		final String[] portsPayant = new String[] { "paimpol" };
+		final String[] portsGratuit = new String[] { "st-nazaire" };
 		
-		file = new File("data/payant/paimpol.txt");
-		mareesCoefs = LectureFichierTxt.lectureMareeDate(file);
-		panelCoefs = new PanelCoefs(mareesCoefs.get(mareesCoefs.keySet().iterator().next()));
+		//TODO: Le nom du port devrait être récupérer depuis le fichier
+		for (String portName : portsPayant) {
+			file = new File("data/payant/" + portName + ".txt");
+			HashMap<Date, Maree[]> marees = LectureFichierTxt.lectureMareeDate(file);
 
-		file = new File("data/gratuit/st-nazaire.txt");
-		mareesHauteurs = LectureFichierTxt.lectureMareeHauteur(file);
-		panelHauteurs = new PanelHauteurs(mareesHauteurs.get(mareesHauteurs.keySet().iterator().next()));
-
+			Port port = new Port();
+			port.setCoefs(marees);
+			ports.put(portName, port);
+		}
+		
+		for (String portName : portsGratuit) {
+			file = new File("data/gratuit/" + portName + ".txt");
+			HashMap<Date, Maree[]> marees = LectureFichierTxt.lectureMareeHauteur(file);
+			
+			Port port = new Port();
+			port.setHauteurs(marees);
+			ports.put(portName, port);
+		}
 	}
 }

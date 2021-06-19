@@ -78,6 +78,10 @@ public class Date implements Comparable <Date>, ConstantesCalendrier {
 			return 1;
 		return 0;	
 	}
+	
+	public boolean equals(Date parDate) {
+		return this.compareTo(parDate) == 0;
+	}
 
 	public Date dateDuLendemain ()   {	
 		if (jour < dernierJourDuMois(mois,annee))
