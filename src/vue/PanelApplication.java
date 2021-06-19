@@ -12,6 +12,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
 
 import constantes.ConstantesCouleurs;
 import modele.Date;
@@ -41,13 +42,8 @@ public class PanelApplication extends JPanel {
 		panelSud.add(panelCoefs, BorderLayout.EAST);
 		panelCentre.add(panelSud, BorderLayout.SOUTH);
 		
-		JPanel panelListePorts = new JPanel(new BorderLayout());
-		panelListePorts.setBackground(Color.red);
-		JList<String> listePorts = new JList<String>(new String[] { "Port 1", "Port 2", "Port 3","Port 1", "Port 2", "Port 3","Port 1", "Port 2", "Port 3","Port 1", "Port 2", "Port 3"});
-		JScrollPane scrollPane = new JScrollPane(listePorts);
-		panelListePorts.add(new JLabel("Liste des ports"), BorderLayout.NORTH);
-		panelListePorts.add(scrollPane, BorderLayout.CENTER);
-		
+		PanelListePorts panelListePorts = new PanelListePorts();
+
 		add(panelCentre, BorderLayout.CENTER);
 		add(panelListePorts, BorderLayout.WEST);
 		
