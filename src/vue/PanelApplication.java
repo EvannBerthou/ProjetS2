@@ -36,7 +36,7 @@ public class PanelApplication extends JPanel {
 		add(panelCentre, BorderLayout.CENTER);
 		add(panelListePorts, BorderLayout.WEST);
 		
-		new Controleur(panelSud, panelListePorts);
+		new Controleur(panelSud, panelListePorts, panelCalendrier);
 	}
 	
 	/**

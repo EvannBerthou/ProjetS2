@@ -11,39 +11,46 @@ import modele.Port;
 
 public class PanelTableaux extends JPanel {
 
-	PanelHauteurs panelHauteurs;
-	PanelCoefs panelCoefs;
-	HashMap<String, Port> ports;
+	private TableauMarees table = new TableauMarees();
+	private HashMap<String, Port> ports;
+	
+	private String port;
+	private Date date;
 	
 	public PanelTableaux(HashMap<String, Port> _ports) {
 		this.ports = _ports;
-		
 		setLayout(new BorderLayout());
-		panelHauteurs = new PanelHauteurs();
-		panelCoefs = new PanelCoefs();
-
-		add(panelHauteurs, BorderLayout.CENTER);
-		add(panelCoefs, BorderLayout.EAST);
-
-		//setTableauHauteurs(ports.get("st-nazaire").getHauteursDate(new Date(1, 1, 2021)));
-		//setTableauCoefs(ports.get("st-nazaire").getCoefsDate(new Date(1, 6, 2021)));
+		add(table, BorderLayout.CENTER);
 	}	
-	
-	public void setTableauHauteurs(String port, String date) {
-		if (ports.containsKey(port)) {
-			Maree[] m = ports.get(port).getHauteursDate(new Date(1, 1, 2021));
-			if (m != null) {
-				panelHauteurs.setValeurs(m);
-			}
-		}
+
+	public void setPort(String _port) {
+		this.port = _port;
+		changerTableaux();
 	}
 	
-	public void setTableauCoefs(String port, String date) {
-		if (ports.containsKey(port)) {
-			Maree[] m = ports.get(port).getCoefsDate(new Date(1, 6, 2021));
-			if (m != null) {
-				panelCoefs.setValeurs(m);
-			}
+	public void setDate(Date _date) {
+		this.date = _date;
+		changerTableaux();
+	}
+	
+	//TODO: Afficher un tableau vide si aucune info est disponible
+	private void changerTableaux() {
+		if (this.port == null || this.date == null) return;
+		if (!ports.containsKey(port)) return;
+		
+		Maree[] hauteurs = ports.get(port).getHauteursDate(this.date);
+		if (hauteurs != null) {
+			table.setHauteurs(hauteurs);
+			return;
 		}
+
+		Maree[] coefs = ports.get(port).getCoefsDate(this.date);
+		if (coefs != null) {
+			table.setCoefs(coefs);
+			return;
+		}
+		
+		// Si aucune donnée n'est disponible
+		table.clear();
 	}
 }

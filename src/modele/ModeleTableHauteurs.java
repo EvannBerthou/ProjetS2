@@ -11,8 +11,10 @@ public class ModeleTableHauteurs extends DefaultTableModel {
 		int row = 0;
 		int column = 0;
 		for (Maree m : marees) {
-			setValueAt(m.getHeure(), row, column);
-			setValueAt(m.getHauteur() + "m", row + 1, column);
+			if (m != null) {
+				setValueAt(m.getHeure(), row, column);
+				setValueAt(m.getHauteur() + "m", row + 1, column);
+			}
 			// On avance la colonne après chaque ajout
 			column++;
 			// Et on ajoute 2 ligne afin de sauter l'heure et la date

@@ -8,7 +8,6 @@ import javax.swing.JButton;
  *
  */
 public class BoutonDate extends JButton {
-
 	/**
 	 * La date du bouton
 	 */
@@ -20,7 +19,7 @@ public class BoutonDate extends JButton {
 	 */
 	public BoutonDate(Date date) {
 		super (Integer.toString(date.getJour()));
-		this.date= date;
+		this.date = date;
 	}
 
 	/**
