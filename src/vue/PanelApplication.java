@@ -47,12 +47,10 @@ public class PanelApplication extends JPanel {
 	private void chargerPorts() {		
 		File dossier;
 		dossier = new File("data/payant");
-		for (File cheminFichier : dossier.listFiles()) {
-			String nomPort = cheminFichier.getName();
-			// On retire le .txt à la fin
-			nomPort = nomPort.substring(0, nomPort.lastIndexOf('.'));
+		for (File fichier : dossier.listFiles()) {
+			String nomPort = LectureFichierTxt.getNomPort(fichier);
 			
-			HashMap<Date, Maree[]> marees = LectureFichierTxt.lectureMareeDate(cheminFichier);
+			HashMap<Date, Maree[]> marees = LectureFichierTxt.lectureMareeDate(fichier);
 			
 			Port port = new Port();
 			port.setCoefs(marees);
@@ -60,12 +58,10 @@ public class PanelApplication extends JPanel {
 		}
 		
 		dossier = new File("data/gratuit");
-		for (File cheminFichier : dossier.listFiles()) {
-			String nomPort = cheminFichier.getName();
-			// On retire le .txt à la fin
-			nomPort = nomPort.substring(0, nomPort.lastIndexOf('.'));
+		for (File fichier : dossier.listFiles()) {
+			String nomPort = LectureFichierTxt.getNomPort(fichier);
 			
-			HashMap<Date, Maree[]> marees = LectureFichierTxt.lectureMareeHauteur(cheminFichier);
+			HashMap<Date, Maree[]> marees = LectureFichierTxt.lectureMareeHauteur(fichier);
 			
 			// Si un port avec le même nom existe déjà, alors on ajoute les données au lieu
 			// de créer un nouveau port (ce qui effacerais l'ancien).
@@ -85,14 +81,4 @@ public class PanelApplication extends JPanel {
 	 */
 	private void sauvegarderPorts() {
 	}
-	
-	private HashSet<Date> getDatesActives(HashMap<String, Port> _ports) {
-		HashSet<Date> dates = new HashSet<Date>();
-		for (Port p : _ports.values()) {
-			dates.addAll(p.getDates());
-		}
-		System.out.println(dates);
-		return dates;
-	}
-
 }

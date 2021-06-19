@@ -17,7 +17,7 @@ public class TableauMarees extends JPanel {
 		table = new JTable();
 		table.setDefaultRenderer(Object.class, new MareeCellRenderer());
 		add(table);
-		setBackground(ConstantesCouleurs.MASTIC);
+		setBackground(ConstantesCouleurs.VANILLE);
 	}
 	
 	public void setHauteurs(Maree[] marees) {

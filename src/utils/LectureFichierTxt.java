@@ -123,4 +123,24 @@ public class LectureFichierTxt {
 		}
 		return res;
 	}
+	
+	public static String getNomPort(File fichier) {
+		try {
+			BufferedReader buffer = new BufferedReader (new InputStreamReader(new FileInputStream(fichier)));
+			String ligneLue = buffer.readLine();
+			String[] parts = ligneLue.split(":");
+			if (ligneLue.startsWith("#")) {
+				String nom = parts[1];
+				return nom.trim().toLowerCase();
+			} 
+			
+			String[] parts2 = parts[1].split("\\(");
+			return parts2[0].trim().toLowerCase();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return "";
+	}
 }
