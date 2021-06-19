@@ -1,13 +1,16 @@
 package vue;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.io.File;
 import java.util.HashMap;
 
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
 import constantes.ConstantesCouleurs;
@@ -38,8 +41,15 @@ public class PanelApplication extends JPanel {
 		panelSud.add(panelCoefs, BorderLayout.EAST);
 		panelCentre.add(panelSud, BorderLayout.SOUTH);
 		
+		JPanel panelListePorts = new JPanel(new BorderLayout());
+		panelListePorts.setBackground(Color.red);
+		JList<String> listePorts = new JList<String>(new String[] { "Port 1", "Port 2", "Port 3","Port 1", "Port 2", "Port 3","Port 1", "Port 2", "Port 3","Port 1", "Port 2", "Port 3"});
+		JScrollPane scrollPane = new JScrollPane(listePorts);
+		panelListePorts.add(new JLabel("Liste des ports"), BorderLayout.NORTH);
+		panelListePorts.add(scrollPane, BorderLayout.CENTER);
+		
 		add(panelCentre, BorderLayout.CENTER);
-		add(new JPanel().add(new JLabel("Longue liste de ports")), BorderLayout.WEST);
+		add(panelListePorts, BorderLayout.WEST);
 		
 	}
 }
