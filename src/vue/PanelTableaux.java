@@ -33,7 +33,6 @@ public class PanelTableaux extends JPanel {
 		changerTableaux();
 	}
 	
-	//TODO: Afficher un tableau vide si aucune info est disponible
 	private void changerTableaux() {
 		if (this.port == null || this.date == null) return;
 		if (!ports.containsKey(port)) return;

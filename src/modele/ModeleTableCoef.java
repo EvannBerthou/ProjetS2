@@ -2,8 +2,6 @@ package modele;
 
 import javax.swing.table.DefaultTableModel;
 
-import constantes.ConstantesCouleurs;
-
 public class ModeleTableCoef extends DefaultTableModel {
 	public ModeleTableCoef(Maree[] marees) {
 		super();

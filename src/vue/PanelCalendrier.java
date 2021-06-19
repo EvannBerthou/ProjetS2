@@ -3,10 +3,8 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel ;
 
 import constantes.ConstantesCalendrier;
@@ -14,12 +12,10 @@ import constantes.ConstantesCouleursFontes;
 import controleur.Controleur;
 import modele.Date;
 
-import javax.swing.JLabel ;
-import javax.swing.JButton ;
-import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.awt.event.ActionEvent;
 
 /**

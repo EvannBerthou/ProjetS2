@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.io.File;
 import java.util.HashMap;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import constantes.ConstantesCouleurs;

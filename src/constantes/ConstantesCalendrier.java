@@ -1,7 +1,5 @@
 package constantes;
 
-import java.awt.Color;
-
 public interface ConstantesCalendrier {
 	
 	final String [] JOURS_SEMAINE = {"lundi","mardi","mercredi","jeudi","vendredi","samedi","dimanche"} ; 
