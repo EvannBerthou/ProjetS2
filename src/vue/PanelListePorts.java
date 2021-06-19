@@ -9,6 +9,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -21,8 +22,11 @@ public class PanelListePorts extends JPanel {
 	public PanelListePorts(Set<String> nomPorts) {
 		setLayout(new BorderLayout());
 		ports = nomPorts.toArray(new String[0]);
+		
 		listePorts = new JList<String>(ports);
+		listePorts.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane scrollPane = new JScrollPane(listePorts);
+		
 		add(new JLabel("Liste des ports"), BorderLayout.NORTH);
 		add(scrollPane, BorderLayout.CENTER);
 		add(recherchePort, BorderLayout.SOUTH);
