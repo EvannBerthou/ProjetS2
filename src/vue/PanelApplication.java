@@ -1,18 +1,11 @@
 package vue;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.GridLayout;
 import java.io.File;
 import java.util.HashMap;
 
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextField;
 
 import constantes.ConstantesCouleurs;
 import modele.Date;
@@ -20,19 +13,17 @@ import modele.Maree;
 import utils.LectureFichierTxt;
 
 public class PanelApplication extends JPanel {
+	
+	private HashMap<Date, Maree[]> mareesCoefs;
+	private PanelCoefs panelCoefs;
+	
+	private HashMap<Date, Maree[]> mareesHauteurs;
+	private PanelHauteurs panelHauteurs;
+	
 	public PanelApplication() {
 		setLayout(new BorderLayout());
+		chargerPorts();
 
-		File file;
-		file = new File("data/paimpol.txt");
-		HashMap<Date, Maree[]> mareesCoefs = LectureFichierTxt.lectureMareeDate(file);
-		PanelCoefs panelCoefs = new PanelCoefs(mareesCoefs.get(mareesCoefs.keySet().iterator().next()));
-
-		file = new File("data/st-nazaire.txt");
-		HashMap<Date, Maree[]> mareesHauteurs = LectureFichierTxt.lectureMareeHauteur(file);
-		PanelHauteurs panelHauteurs = new PanelHauteurs(mareesHauteurs.get(mareesHauteurs.keySet().iterator().next()));
-
-		
 		JPanel panelCentre = new JPanel(new BorderLayout());
 		panelCentre.setBackground(ConstantesCouleurs.BLEU);
 		panelCentre.add(new JLabel("Calendrier"), BorderLayout.CENTER);
@@ -46,6 +37,22 @@ public class PanelApplication extends JPanel {
 
 		add(panelCentre, BorderLayout.CENTER);
 		add(panelListePorts, BorderLayout.WEST);
+	}
+	
+	/**
+	 * Charge tous les ports qui sont dans les dossiers correspondant
+	 * data/gratuit ou data/payant
+	 */
+	private void chargerPorts() {
+		File file;
 		
+		file = new File("data/payant/paimpol.txt");
+		mareesCoefs = LectureFichierTxt.lectureMareeDate(file);
+		panelCoefs = new PanelCoefs(mareesCoefs.get(mareesCoefs.keySet().iterator().next()));
+
+		file = new File("data/gratuit/st-nazaire.txt");
+		mareesHauteurs = LectureFichierTxt.lectureMareeHauteur(file);
+		panelHauteurs = new PanelHauteurs(mareesHauteurs.get(mareesHauteurs.keySet().iterator().next()));
+
 	}
 }
