@@ -27,7 +27,7 @@ public class PanelApplication extends JPanel {
 		
 		JPanel panelSud = new JPanel(new BorderLayout());
 		panelSud.add(new PanelHauteurs(ports.get("st-nazaire").getHauteursDate(new Date(1, 1, 2021))), BorderLayout.CENTER);
-		panelSud.add(new PanelCoefs(ports.get("paimpol").getCoefsDate(new Date(1, 6, 2021))), BorderLayout.EAST);
+		panelSud.add(new PanelCoefs(ports.get("st-nazaire").getCoefsDate(new Date(1, 6, 2021))), BorderLayout.EAST);
 		panelCentre.add(panelSud, BorderLayout.SOUTH);
 		
 		PanelListePorts panelListePorts = new PanelListePorts();
@@ -43,7 +43,7 @@ public class PanelApplication extends JPanel {
 	private void chargerPorts() {
 		File file;
 		//TODO: Charger les ports depuis la liste des dossiers
-		final String[] portsPayant = new String[] { "paimpol" };
+		final String[] portsPayant = new String[] { "paimpol" , "st-nazaire" };
 		final String[] portsGratuit = new String[] { "st-nazaire" };
 		
 		//TODO: Le nom du port devrait être récupérer depuis le fichier
@@ -55,12 +55,18 @@ public class PanelApplication extends JPanel {
 			port.setCoefs(marees);
 			ports.put(portName, port);
 		}
-		
+
 		for (String portName : portsGratuit) {
 			file = new File("data/gratuit/" + portName + ".txt");
 			HashMap<Date, Maree[]> marees = LectureFichierTxt.lectureMareeHauteur(file);
+			Port port;
 			
-			Port port = new Port();
+			if (ports.containsKey(portName)) {
+				port = ports.get(portName);
+			} else {
+				port = new Port();
+			}
+
 			port.setHauteurs(marees);
 			ports.put(portName, port);
 		}
