@@ -25,7 +25,8 @@ public class PanelApplication extends JPanel {
 		
 		JPanel panelCentre = new JPanel(new BorderLayout());
 		panelCentre.setBackground(ConstantesCouleurs.BLEU);
-		panelCentre.add(new JLabel("Calendrier"), BorderLayout.CENTER);
+		PanelCalendrier panelCalendrier = new PanelCalendrier();
+		panelCentre.add(panelCalendrier, BorderLayout.CENTER);
 		
 		PanelTableaux panelSud = new PanelTableaux(ports);
 		panelCentre.add(panelSud, BorderLayout.SOUTH);
