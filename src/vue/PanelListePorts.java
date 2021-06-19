@@ -13,6 +13,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import controleur.Controleur;
+
 public class PanelListePorts extends JPanel {
 
 	private final String[] ports;
@@ -50,5 +52,9 @@ public class PanelListePorts extends JPanel {
 			}
 		}
 		listePorts.setModel(model);
+	}
+
+	public void enrengistrerEcoute(Controleur controleur) {
+		listePorts.addListSelectionListener(controleur);
 	}
 }

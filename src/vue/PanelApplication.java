@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import constantes.ConstantesCouleurs;
+import controleur.Controleur;
 import modele.Date;
 import modele.Maree;
 import modele.Port;
@@ -26,13 +27,15 @@ public class PanelApplication extends JPanel {
 		panelCentre.setBackground(ConstantesCouleurs.BLEU);
 		panelCentre.add(new JLabel("Calendrier"), BorderLayout.CENTER);
 		
-		JPanel panelSud = new PanelTableaux(ports);
+		PanelTableaux panelSud = new PanelTableaux(ports);
 		panelCentre.add(panelSud, BorderLayout.SOUTH);
 		
 		PanelListePorts panelListePorts = new PanelListePorts(ports.keySet());
 
 		add(panelCentre, BorderLayout.CENTER);
 		add(panelListePorts, BorderLayout.WEST);
+		
+		new Controleur(panelSud, panelListePorts);
 	}
 	
 	/**

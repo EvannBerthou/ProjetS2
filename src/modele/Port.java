@@ -3,8 +3,8 @@ package modele;
 import java.util.HashMap;
 
 public class Port {
-	private HashMap<Date, Maree[]> mareesCoefs;
-	private HashMap<Date, Maree[]> mareesHauteurs;
+	private HashMap<Date, Maree[]> mareesCoefs = new HashMap<Date, Maree[]>();
+	private HashMap<Date, Maree[]> mareesHauteurs = new HashMap<Date, Maree[]>();
 	
 	public void setCoefs(HashMap<Date, Maree[]> marees) {
 		this.mareesCoefs = marees;
