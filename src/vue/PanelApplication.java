@@ -31,7 +31,7 @@ public class PanelApplication extends JPanel {
 		panelSud.add(new PanelCoefs(ports.get("st-nazaire").getCoefsDate(new Date(1, 6, 2021))), BorderLayout.EAST);
 		panelCentre.add(panelSud, BorderLayout.SOUTH);
 		
-		PanelListePorts panelListePorts = new PanelListePorts();
+		PanelListePorts panelListePorts = new PanelListePorts(ports.keySet());
 
 		add(panelCentre, BorderLayout.CENTER);
 		add(panelListePorts, BorderLayout.WEST);

@@ -1,6 +1,7 @@
 package vue;
 
 import java.awt.BorderLayout;
+import java.util.Set;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
@@ -13,12 +14,14 @@ import javax.swing.event.DocumentListener;
 
 public class PanelListePorts extends JPanel {
 
-	private final String[] ports = new String[] { "Saint-Nazaire", "Port 2", "Port 3","Port 1", "Port 2", "Port 3","Port 1", "Port 2", "Port 3","Port 1", "Port 2", "Port 3"};
-	private JList<String> listePorts = new JList<String>(ports);
+	private final String[] ports;
+	private JList<String> listePorts;
 	JTextField recherchePort = new JTextField(10);
 	
-	public PanelListePorts() {
+	public PanelListePorts(Set<String> nomPorts) {
 		setLayout(new BorderLayout());
+		ports = nomPorts.toArray(new String[0]);
+		listePorts = new JList<String>(ports);
 		JScrollPane scrollPane = new JScrollPane(listePorts);
 		add(new JLabel("Liste des ports"), BorderLayout.NORTH);
 		add(scrollPane, BorderLayout.CENTER);
