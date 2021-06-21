@@ -61,7 +61,6 @@ public class PanelCalendrier extends JPanel implements ActionListener, Constante
 
 	/**
 	 * Constructeur du PanelCalendrier
-	 * @param ports 
 	 */
 	public PanelCalendrier() {
 		Date today = new Date();		 

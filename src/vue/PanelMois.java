@@ -39,7 +39,6 @@ public class PanelMois extends JPanel implements ActionListener,ConstantesCalend
 	/** 
 	 * Constructeur d'un PanelMois
 	 * @param mois Le mois avec lequel il faut créer les dates
-	 * @param ports 
 	 */
 	public PanelMois(int mois) {
 		Date today = new Date();

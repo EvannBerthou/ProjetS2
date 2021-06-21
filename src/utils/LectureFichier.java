@@ -8,16 +8,19 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import modele.Date;
 import modele.Heure;
-import modele.ListePort;
 import modele.Maree;
  
 
+/**
+ * Outil qui permet de lire et d'écrire des fichiers
+ * @author Evann Berthou
+ *
+ */
 public class LectureFichier {
 	/**
 	 * Est utilisé afin de parser les données payantes.
@@ -152,12 +155,12 @@ public class LectureFichier {
 		
 		return "";
 	}
+	
 	/**
-	 * 
-	* Méthode de lecture d'un fichier
-	* @param fichier : le fichier lu
-	* @return l'objet lu
-	*/
+	 * Méthode de lecture d'un fichier
+	 * @param fichier : le fichier lu
+	 * @return l'objet lu
+	 */
 	public static Object charger(File fichier) {
 		ObjectInputStream flux;
 		Object objetLu = null;
@@ -177,11 +180,11 @@ public class LectureFichier {
 		}
 		return objetLu;
 	}
-	
-	/* Méthode d'écriture dans un fichier
-	* @param parFichier : le fichier dans lequel on écrit
-	* @param parObjet : l'objet écrit dans le fichier
-	*/
+
+	/** Méthode d'écriture dans un fichier
+	 * @param parFichier : le fichier dans lequel on écrit
+	 * @param parObjet : l'objet écrit dans le fichier
+	 */
 	public static void ecriture (File parFichier, Object parObjet) {
 		ObjectOutputStream flux = null;
 		// Ouverture du fichier en mode �criture
