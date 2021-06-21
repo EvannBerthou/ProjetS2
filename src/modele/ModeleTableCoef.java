@@ -2,7 +2,16 @@ package modele;
 
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * Modèle pour le tableaux des coefficients
+ * @author Evann Berthou
+ *
+ */
 public class ModeleTableCoef extends DefaultTableModel {
+	/**
+	 * Constructeur du modèle
+	 * @param marees Les marées à afficher
+	 */
 	public ModeleTableCoef(Maree[] marees) {
 		super();
 		setColumnCount(4);
@@ -23,6 +32,11 @@ public class ModeleTableCoef extends DefaultTableModel {
 		}
 	}
 	
+	/**
+	 * Ajoute les informations au modèle
+	 * @param m La marée
+	 * @param row La ligne
+	 */
 	private void setCoefHeure(Maree m, int row) {
 		String[] parts = m.getParts();			
 		for (int j = 0; j < 3; j++) {
@@ -31,6 +45,9 @@ public class ModeleTableCoef extends DefaultTableModel {
 		}
 	}
 	
+	/**
+	 * Désactive l'édition des cellules.
+	 */
 	public boolean isCellEditable(int row, int column) {
 		return false;
 	}

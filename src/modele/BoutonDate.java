@@ -4,7 +4,7 @@ import javax.swing.JButton;
 
 /**
  * Permet de stocker la date d'un bouton dans le @see PanelCalendrier
- * @author eberthou
+ * @author Evann Berthou
  *
  */
 public class BoutonDate extends JButton {

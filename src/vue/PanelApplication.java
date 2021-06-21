@@ -19,10 +19,21 @@ import modele.Maree;
 import modele.Port;
 import utils.LectureFichier;
 
+/**
+ * Panel principal de l'application
+ * @author Evann Berthou
+ *
+ */
 public class PanelApplication extends JPanel {
 
+	/**
+	 * Liste des ports
+	 */
 	private ListePort ports = new ListePort();
 	
+	/**
+	 * Constructeur du panel
+	 */
 	public PanelApplication() {				
 		setLayout(new BorderLayout());
 		chargerPorts();	

@@ -2,8 +2,16 @@ package modele;
 
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * Modèle pour le tableaux des coefficients 
+ * @author Evann Berthou
+ *
+ */
 public class ModeleTableHauteurs extends DefaultTableModel {
-
+	/**
+	 * Constructeur du modèle
+	 * @param marees Les marées à afficher
+	 */
 	public ModeleTableHauteurs(Maree[] marees) {
 		super();
 		setColumnCount(6);
@@ -25,6 +33,9 @@ public class ModeleTableHauteurs extends DefaultTableModel {
 		}
 	}
 	
+	/**
+	 * Désactive l'édition des cellules.
+	 */
 	public boolean isCellEditable(int row, int column) {
 		return false;
 	}

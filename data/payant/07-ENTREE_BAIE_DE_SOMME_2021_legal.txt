@@ -1,4 +1,4 @@
-Site : Entrée Baie de Somme (Somme)
+Site : Entr�e Baie de Somme (Somme)
 latitude : 50.235233 - longitude : 1.472300
 Système horaire : HEURES LEGALES (UT+1h et UT+2h)
 date	Heure (PM)	hauteur (PM)	coef. (PM)	Heure (PM)	hauteur (PM)	coef. (PM)	Heure (BM)	hauteur (BM)	Heure (BM)	hauteur (BM)

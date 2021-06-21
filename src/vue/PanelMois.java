@@ -22,7 +22,7 @@ import modele.Port;
 
 /**
  * Panel qui affiche toutes les dates d'un mois
- * @author eberthou
+ * @author Evann Berthou
  */
 public class PanelMois extends JPanel implements ActionListener,ConstantesCalendrier, ConstantesCouleursFontes {
 

@@ -4,7 +4,7 @@ import java.util.Collection;
 
 /**
  * Abstraction de toutes les dates d'un mois
- * @author eberthou
+ * @author Evann Berthou
  *
  */
 public class CalendrierDuMois {	

@@ -21,8 +21,8 @@ import modele.Maree;
 public class LectureFichier {
 	/**
 	 * Est utilisé afin de parser les données payantes.
-	 * @param fichier
-	 * @return
+	 * @param fichier Le fichier à parser
+	 * @return Une map des marees par date
 	 */
 	public static HashMap<Date, Maree[]> lectureMareeDate(File fichier) {
 		HashMap<Date, Maree[]> res = new HashMap<Date, Maree[]>();
@@ -60,8 +60,8 @@ public class LectureFichier {
 	
 	/**
 	 * Est utilisé afin de parser les données gratuites.
-	 * @param fichier
-	 * @return
+	 * @param fichier Le fichier à parser
+	 * @return Une map des marees par date
 	 */
 	public static HashMap<Date, Maree[]> lectureMareeHauteur(File fichier) {
 		HashMap<Date, Maree[]> res = new HashMap<Date, Maree[]>();
@@ -128,6 +128,11 @@ public class LectureFichier {
 		return res;
 	}
 	
+	/**
+	 * Renvoie le nom du port du fichier en train d'être lu
+	 * @param fichier Le fichier à lire
+	 * @return Le nom du port
+	 */
 	public static String getNomPort(File fichier) {
 		try {
 			BufferedReader buffer = new BufferedReader (new InputStreamReader(new FileInputStream(fichier)));

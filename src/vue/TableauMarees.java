@@ -10,9 +10,20 @@ import modele.MareeCellRenderer;
 import modele.ModeleTableCoef;
 import modele.ModeleTableHauteurs;
 
+/**
+ * Panel contenannt le tableau
+ * @author Evann Berthou
+ *
+ */
 public class TableauMarees extends JPanel {
-	JTable table;
+	/**
+	 * Le tableau qui sera affiché
+	 */
+	private JTable table;
 	
+	/**
+	 * Constructeur 
+	 */
 	public TableauMarees() {
 		table = new JTable();
 		table.setDefaultRenderer(Object.class, new MareeCellRenderer());
@@ -20,16 +31,27 @@ public class TableauMarees extends JPanel {
 		setBackground(ConstantesCouleurs.VANILLE);
 	}
 	
+	/**
+	 * Change les informations des hauteurs à afficher
+	 * @param marees La liste des marees à afficher
+	 */
 	public void setHauteurs(Maree[] marees) {
 		ModeleTableHauteurs model = new ModeleTableHauteurs(marees);
 		table.setModel(model);
 	}
 	
+	/**
+	 * Change les informations des coefficients à afficher
+	 * @param marees La liste des marees à afficher
+	 */
 	public void setCoefs(Maree[] marees) {
 		ModeleTableCoef model = new ModeleTableCoef(marees);
 		table.setModel(model);
 	}
 	
+	/**
+	 * Vide le tableau
+	 */
 	public void clear() {
 		table.setModel(new DefaultTableModel());
 	}

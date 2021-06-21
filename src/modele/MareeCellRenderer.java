@@ -9,6 +9,11 @@ import javax.swing.table.TableCellRenderer;
 
 import constantes.ConstantesCouleurs;
 
+/**
+ * Renderer du tableaux des informations des marées.
+ * @author Evann Berthou
+ *
+ */
 public class MareeCellRenderer extends JLabel implements TableCellRenderer {
 
 	@Override

@@ -15,12 +15,32 @@ import javax.swing.event.DocumentListener;
 
 import controleur.Controleur;
 
+/**
+ * Panel de la liste des ports chargés
+ * @author Evann Berthou
+ *
+ */
 public class PanelListePorts extends JPanel {
 
+	/**
+	 * Le nom des ports
+	 */
 	private final String[] ports;
+	
+	/**
+	 * La JList des portsd
+	 */
 	private JList<String> listePorts;
+	
+	/**
+	 * Le champ de recherche d'un port par nom
+	 */
 	JTextField recherchePort = new JTextField(10);
 	
+	/**
+	 * Constructeur du panel
+	 * @param nomPorts La liste des noms des ports
+	 */
 	public PanelListePorts(Set<String> nomPorts) {
 		setLayout(new BorderLayout());
 		ports = nomPorts.toArray(new String[0]);
@@ -54,6 +74,10 @@ public class PanelListePorts extends JPanel {
 		listePorts.setModel(model);
 	}
 
+	/**
+	 * Enrengistrer le Panel à l'écouter du contrôleur
+	 * @param controleur Le contrôleur
+	 */
 	public void enrengistrerEcoute(Controleur controleur) {
 		listePorts.addListSelectionListener(controleur);
 	}

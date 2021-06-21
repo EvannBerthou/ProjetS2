@@ -13,7 +13,10 @@ import javax.swing.JOptionPane;
 import constantes.ConstantesPort;
 
 public class Client extends JFrame implements ActionListener {
-
+	
+	/**
+	 * Constructeur du Client
+	 */
 	public Client() {
 		super("Gestion de ports");
 		PanelApplication panel = new PanelApplication();
@@ -26,6 +29,9 @@ public class Client extends JFrame implements ActionListener {
 		setVisible(true);
 	}
 
+	/**
+	 * Ajoute les élements au JMenu
+	 */
 	private void setJMenu() {
 		JMenuBar bar = new JMenuBar();
 		
@@ -61,10 +67,17 @@ public class Client extends JFrame implements ActionListener {
 		setJMenuBar(bar);
 	}
 	
+	/**
+	 * Main de l'application
+	 * @param args Les arguments
+	 */
 	public static void main(String[] args) {
 		new Client();
 	}
 
+	/**
+	 * Eest appelé lorsqu'un élement du JMenu est cliqué
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String cmd = e.getActionCommand();
@@ -78,6 +91,9 @@ public class Client extends JFrame implements ActionListener {
 		}
 	}
 
+	/**
+	 * Supprimer les données des ports sauvergardés
+	 */
 	private void viderCache() {
 		File file = new File(ConstantesPort.CHEMIN_FICHIER);
 		if (file.length() != 0) {
@@ -89,10 +105,16 @@ public class Client extends JFrame implements ActionListener {
 		}
 	}
 
+	/**
+	 * Affiche un menu d'aide d'utilisation de l'application
+	 */
 	private void afficherAide() {
 		// TODO Auto-generated method stub
 	}	
 	
+	/**
+	 * Affiche le A Propos de l'application
+	 */
 	private void afficherPropos() {
         JOptionPane.showMessageDialog(null, 
         		"Projet réalisé par : \n"

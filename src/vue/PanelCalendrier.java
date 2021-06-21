@@ -24,7 +24,7 @@ import java.awt.event.ActionEvent;
 
 /**
  * Panel qui s'occupe de l'affichage des dates du Calendrier
- * @author eberthou
+ * @author Evann Berthou
  *
  */
 public class PanelCalendrier extends JPanel implements ActionListener, ConstantesCalendrier, ConstantesCouleursFontes {
@@ -167,6 +167,10 @@ public class PanelCalendrier extends JPanel implements ActionListener, Constante
 		}
 	}
 	
+	/**
+	 * Desactive toutes les dates du tableaux qui ne sont pas dans la liste des dates données
+	 * @param dates La liste des dates à laisser activés
+	 */
 	public void desactiverDates(HashSet<Date> dates) {
 		for (PanelMois pm : panelsMois) {
 			pm.desactiverDates(dates);
