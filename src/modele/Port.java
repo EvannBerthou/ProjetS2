@@ -1,9 +1,10 @@
 package modele;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class Port {
+public class Port implements Serializable {
 	private HashMap<Date, Maree[]> mareesCoefs = new HashMap<Date, Maree[]>();
 	private HashMap<Date, Maree[]> mareesHauteurs = new HashMap<Date, Maree[]>();
 	

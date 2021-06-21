@@ -1,6 +1,8 @@
 package modele;
 
-public class Heure {
+import java.io.Serializable;
+
+public class Heure implements Serializable {
 	private int heure;
 	private int minute;
 	

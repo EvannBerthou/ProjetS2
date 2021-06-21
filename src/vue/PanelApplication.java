@@ -5,23 +5,27 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import constantes.ConstantesCouleurs;
+import constantes.ConstantesPort;
 import controleur.Controleur;
 import modele.Date;
+import modele.ListePort;
 import modele.Maree;
 import modele.Port;
-import utils.LectureFichierTxt;
+import utils.LectureFichier;
 
 public class PanelApplication extends JPanel {
+
+	private ListePort ports = new ListePort();
 	
-	private HashMap<String, Port> ports = new HashMap<String, Port>();
-	
-	public PanelApplication() {
+	public PanelApplication() {				
 		setLayout(new BorderLayout());
 		chargerPorts();	
-		sauvegarderPorts();
 		
 		JPanel panelCentre = new JPanel(new BorderLayout());
 		panelCentre.setBackground(ConstantesCouleurs.BLEU);
@@ -44,13 +48,20 @@ public class PanelApplication extends JPanel {
 	 * Charge tous les ports qui sont dans les dossiers correspondant
 	 * data/gratuit ou data/payant
 	 */
-	private void chargerPorts() {		
+	private void chargerPorts() {
+		File sauvegarde = new File(ConstantesPort.CHEMIN_FICHIER);
+		if (sauvegarde.length() != 0) {
+			ports = (ListePort) LectureFichier.charger(sauvegarde);
+			System.out.println("Succès de la lecture du fichier sauvegardé");
+			return;
+		}
+		
 		File dossier;
 		dossier = new File("data/payant");
 		for (File fichier : dossier.listFiles()) {
-			String nomPort = LectureFichierTxt.getNomPort(fichier);
+			String nomPort = LectureFichier.getNomPort(fichier);
 			
-			HashMap<Date, Maree[]> marees = LectureFichierTxt.lectureMareeDate(fichier);
+			HashMap<Date, Maree[]> marees = LectureFichier.lectureMareeDate(fichier);
 			
 			Port port = new Port();
 			port.setCoefs(marees);
@@ -59,9 +70,9 @@ public class PanelApplication extends JPanel {
 		
 		dossier = new File("data/gratuit");
 		for (File fichier : dossier.listFiles()) {
-			String nomPort = LectureFichierTxt.getNomPort(fichier);
+			String nomPort = LectureFichier.getNomPort(fichier);
 			
-			HashMap<Date, Maree[]> marees = LectureFichierTxt.lectureMareeHauteur(fichier);
+			HashMap<Date, Maree[]> marees = LectureFichier.lectureMareeHauteur(fichier);
 			
 			// Si un port avec le même nom existe déjà, alors on ajoute les données au lieu
 			// de créer un nouveau port (ce qui effacerais l'ancien).
@@ -74,11 +85,7 @@ public class PanelApplication extends JPanel {
 			port.setHauteurs(marees);
 			ports.put(nomPort, port);
 		}
-	}
-	
-	/**
-	 * TODO: Serializer les données chargés.
-	 */
-	private void sauvegarderPorts() {
+		LectureFichier.ecriture(new File(ConstantesPort.CHEMIN_FICHIER), ports);
+		System.out.println("Nouveau fichier écrit");
 	}
 }

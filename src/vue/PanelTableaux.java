@@ -6,18 +6,19 @@ import java.util.HashMap;
 import javax.swing.JPanel;
 
 import modele.Date;
+import modele.ListePort;
 import modele.Maree;
 import modele.Port;
 
 public class PanelTableaux extends JPanel {
 
 	private TableauMarees table = new TableauMarees();
-	private HashMap<String, Port> ports;
+	private ListePort ports;
 	
 	private String port;
 	private Date date;
 	
-	public PanelTableaux(HashMap<String, Port> _ports) {
+	public PanelTableaux(ListePort _ports) {
 		this.ports = _ports;
 		setLayout(new BorderLayout());
 		add(table, BorderLayout.CENTER);

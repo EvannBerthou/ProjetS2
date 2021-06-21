@@ -1,6 +1,8 @@
 package modele;
 
-public class Maree {
+import java.io.Serializable;
+
+public class Maree implements Serializable {
 	private Heure heure;
 	private float hauteur;
 	

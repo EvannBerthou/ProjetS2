@@ -22,6 +22,4 @@ public interface ConstantesCalendrier {
 		"21", "22", "23"};
 	public final  String [] MINUTES = {"00", "15", "30", "45"};
 	
-	 
-	
 }

@@ -3,9 +3,10 @@ import java.util.GregorianCalendar;
 
 import constantes.ConstantesCalendrier;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class Date implements Comparable <Date>, ConstantesCalendrier {
+public class Date implements Comparable <Date>, ConstantesCalendrier, Serializable {
 	private int jour;
 	private int mois;
 	private int annee;
