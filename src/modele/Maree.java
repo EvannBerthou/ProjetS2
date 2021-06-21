@@ -9,6 +9,10 @@ import java.io.Serializable;
  */
 public class Maree implements Serializable {
 	/**
+	 * Le serialVersionUID
+	 */
+	private static final long serialVersionUID = -4080685517671592593L;
+	/**
 	 * L'heure de la marée
 	 */
 	private Heure heure;

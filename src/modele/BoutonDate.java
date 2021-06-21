@@ -9,6 +9,10 @@ import javax.swing.JButton;
  */
 public class BoutonDate extends JButton {
 	/**
+	 * Le serialVersionUID
+	 */
+	private static final long serialVersionUID = -4741746749878237055L;
+	/**
 	 * La date du bouton
 	 */
 	private Date date;

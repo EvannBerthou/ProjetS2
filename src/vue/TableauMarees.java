@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import constantes.ConstantesCouleurs;
+import constantes.ConstantesCouleursFontes;
 import modele.Maree;
 import modele.MareeCellRenderer;
 import modele.ModeleTableCoef;
@@ -17,6 +17,10 @@ import modele.ModeleTableHauteurs;
  */
 public class TableauMarees extends JPanel {
 	/**
+	 * Le serialVersionUID
+	 */
+	private static final long serialVersionUID = 6399738024825494633L;
+	/**
 	 * Le tableau qui sera affiché
 	 */
 	private JTable table;
@@ -28,7 +32,7 @@ public class TableauMarees extends JPanel {
 		table = new JTable();
 		table.setDefaultRenderer(Object.class, new MareeCellRenderer());
 		add(table);
-		setBackground(ConstantesCouleurs.VANILLE);
+		setBackground(ConstantesCouleursFontes.VANILLE);
 	}
 	
 	/**

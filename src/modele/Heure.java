@@ -9,6 +9,10 @@ import java.io.Serializable;
  */
 public class Heure implements Serializable {
 	/**
+	 * Le serialVersionUID
+	 */
+	private static final long serialVersionUID = -5904443682527940633L;
+	/**
 	 * L'heure
 	 */
 	private int heure;

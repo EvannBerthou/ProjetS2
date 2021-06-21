@@ -23,6 +23,11 @@ import controleur.Controleur;
 public class PanelListePorts extends JPanel {
 
 	/**
+	 * Le serialVersionUID
+	 */
+	private static final long serialVersionUID = 5194024789421207945L;
+
+	/**
 	 * Le nom des ports
 	 */
 	private final String[] ports;

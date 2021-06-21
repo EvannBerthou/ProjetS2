@@ -9,11 +9,29 @@ import java.awt.Font;
  *
  */
 public interface ConstantesCouleursFontes {
+	/**
+	 * Couleur MASTIC
+	 */
 	final Color MASTIC = new Color (179, 177, 145);
+	/**
+	 * Couleur VANILLE
+	 */
 	final Color VANILLE = new Color (225, 206, 154);
+	/**
+	 * Couleur ROUGE
+	 */
 	final Color ROUGE = new Color (150,15,15);
+	/**
+	 * Couleur VERT
+	 */
 	final Color VERT = new Color (150,150,15);
+	/**
+	 * Couleur BLEU
+	 */
 	final Color BLEU = new Color (22,159,182); 
+	/**
+	 * Couleur CREAM
+	 */
 	public final static Color CREAM = new Color (253,241,184);
 	
 	/**

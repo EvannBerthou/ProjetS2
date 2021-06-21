@@ -11,15 +11,12 @@ import constantes.ConstantesCalendrier;
 import constantes.ConstantesCouleursFontes;
 import controleur.Controleur;
 import modele.Date;
-import modele.Port;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Set;
 import java.awt.event.ActionEvent;
 
 /**
@@ -28,6 +25,11 @@ import java.awt.event.ActionEvent;
  *
  */
 public class PanelCalendrier extends JPanel implements ActionListener, ConstantesCalendrier, ConstantesCouleursFontes {
+
+	/**
+	 * Le serialVersionUID
+	 */
+	private static final long serialVersionUID = -5917180901413003458L;
 
 	/**
 	 * Le Panel au centre du BorderLayout. 

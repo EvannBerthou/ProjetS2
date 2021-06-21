@@ -3,14 +3,9 @@ package vue;
 import java.awt.BorderLayout;
 import java.io.File;
 import java.util.HashMap;
-import java.util.HashSet;
-
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-import constantes.ConstantesCouleurs;
+import constantes.ConstantesCouleursFontes;
 import constantes.ConstantesPort;
 import controleur.Controleur;
 import modele.Date;
@@ -27,6 +22,10 @@ import utils.LectureFichier;
 public class PanelApplication extends JPanel {
 
 	/**
+	 * Le serialVersionUID
+	 */
+	private static final long serialVersionUID = 8344764089919552609L;
+	/**
 	 * Liste des ports
 	 */
 	private ListePort ports = new ListePort();
@@ -39,7 +38,7 @@ public class PanelApplication extends JPanel {
 		chargerPorts();	
 		
 		JPanel panelCentre = new JPanel(new BorderLayout());
-		panelCentre.setBackground(ConstantesCouleurs.BLEU);
+		panelCentre.setBackground(ConstantesCouleursFontes.BLEU);
 		
 		PanelCalendrier panelCalendrier = new PanelCalendrier();
 		panelCentre.add(panelCalendrier, BorderLayout.CENTER);

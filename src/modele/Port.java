@@ -11,6 +11,11 @@ import java.util.HashSet;
  */
 public class Port implements Serializable {
 	/**
+	 * Le serialVersionUID
+	 */
+	private static final long serialVersionUID = -780175007004083615L;
+
+	/**
 	 * La liste des coefficients des marées par date
 	 */
 	private HashMap<Date, Maree[]> mareesCoefs = new HashMap<Date, Maree[]>();
@@ -62,7 +67,7 @@ public class Port implements Serializable {
 
 	/**
 	 * Renvoie la liste de toutes les dates ayant des données disponibles
-	 * @return
+	 * @return La liste des dates ayant des données
 	 */
 	public HashSet<Date> getDates() {
 		HashSet<Date> dates = new HashSet<Date>();

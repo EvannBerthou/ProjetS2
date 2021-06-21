@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -18,13 +17,17 @@ import controleur.Controleur;
 import modele.BoutonDate;
 import modele.CalendrierDuMois;
 import modele.Date;
-import modele.Port;
 
 /**
  * Panel qui affiche toutes les dates d'un mois
  * @author Evann Berthou
  */
 public class PanelMois extends JPanel implements ActionListener,ConstantesCalendrier, ConstantesCouleursFontes {
+
+	/**
+	 * Le serialVersionUID
+	 */
+	private static final long serialVersionUID = 3963365865238592894L;
 
 	/** 
 	 * Le bouton qui est selectionnée

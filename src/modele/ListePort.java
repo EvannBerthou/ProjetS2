@@ -12,6 +12,10 @@ import java.util.Set;
 public class ListePort implements Serializable{
 	
 	/**
+	 * Le serialVersionUID
+	 */
+	private static final long serialVersionUID = 3399746444268534203L;
+	/**
 	 * La liste des ports avec en clé le nom du port et en valeur les informations du port, @see Port
 	 */
 	private HashMap<String, Port> ports = new HashMap<String, Port>();

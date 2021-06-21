@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
-import constantes.ConstantesCouleurs;
+import constantes.ConstantesCouleursFontes;
 
 /**
  * Renderer du tableaux des informations des marées.
@@ -15,6 +15,11 @@ import constantes.ConstantesCouleurs;
  *
  */
 public class MareeCellRenderer extends JLabel implements TableCellRenderer {
+
+	/**
+	 * Le serialVersionUID
+	 */
+	private static final long serialVersionUID = 3067845713663767811L;
 
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -26,7 +31,7 @@ public class MareeCellRenderer extends JLabel implements TableCellRenderer {
 			setText(cell.toString());
 		}
 		if (row % 2 == 0) {
-			setBackground(ConstantesCouleurs.BLEU);
+			setBackground(ConstantesCouleursFontes.BLEU);
 		} else {
 			setBackground(Color.WHITE);
 		}

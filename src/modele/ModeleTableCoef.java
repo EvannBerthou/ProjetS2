@@ -9,6 +9,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ModeleTableCoef extends DefaultTableModel {
 	/**
+	 * Le serialVersionUID
+	 */
+	private static final long serialVersionUID = 1821729428469202456L;
+
+	/**
 	 * Constructeur du modèle
 	 * @param marees Les marées à afficher
 	 */

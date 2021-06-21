@@ -143,10 +143,12 @@ public class LectureFichier {
 			String[] parts = ligneLue.split(":");
 			if (ligneLue.startsWith("#")) {
 				String nom = parts[1];
+				buffer.close();
 				return nom.trim().toLowerCase();
 			} 
 			
 			String[] parts2 = parts[1].split("\\(");
+			buffer.close();
 			return parts2[0].trim().toLowerCase();
 			
 		} catch (IOException e) {

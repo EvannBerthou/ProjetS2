@@ -9,6 +9,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ModeleTableHauteurs extends DefaultTableModel {
 	/**
+	 * Le serialVersionUID
+	 */
+	private static final long serialVersionUID = 1546744016690668136L;
+
+	/**
 	 * Constructeur du modèle
 	 * @param marees Les marées à afficher
 	 */

@@ -1,7 +1,6 @@
 package vue;
 
 import java.awt.BorderLayout;
-import java.util.HashMap;
 
 import javax.swing.JPanel;
 
@@ -17,6 +16,10 @@ import modele.Port;
  */
 public class PanelTableaux extends JPanel {
 
+	/**
+	 * Le serialVersionUID
+	 */
+	private static final long serialVersionUID = 5712087401859656592L;
 	/**
 	 * La table où seront affichés les données
 	 */

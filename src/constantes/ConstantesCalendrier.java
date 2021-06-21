@@ -1,25 +1,45 @@
 package constantes;
 
+/**
+ * Constantes pour le @see PanelCalendrier
+ * @author Evann Berthou
+ *
+ */
 public interface ConstantesCalendrier {
 	
+	/** 
+	 * Le nom des jours de la semaine
+	 */
 	final String [] JOURS_SEMAINE = {"lundi","mardi","mercredi","jeudi","vendredi","samedi","dimanche"} ; 
 	
+	/**
+	 * Version courte des jours de la semaine
+	 */
 	final String [] JOURS_SEMAINE_ABR = {"lu","ma","me","je","ve","sa","di"} ;  
 	
+	/**
+	 * Le nom des mois de l'année
+	 */
 	final  String [] MOIS = {"janvier", "février","mars","avril","mai","juin","juillet", "août","septembre","octobre","novembre","décembre"};
 	
+	/**
+	 * Texte bouton premier
+	 */
 	final String INTIT_PREMIER = "<<";
+	/**
+	 * Texte bouton précédent
+	 */
 	final String INTIT_PRECEDENT = "<";
+	/**
+	 * Texte bouton suivant
+	 */
 	final String INTIT_SUIVANT = ">";
+	/**
+	 * Text bouton dernier
+	 */
 	final String INTIT_DERNIER = ">>";
+	/**
+	 * Liste des textes des boutons
+	 */
 	final  String [] INTITULES_BOUTONS = {INTIT_PREMIER,INTIT_PRECEDENT, INTIT_SUIVANT, INTIT_DERNIER};
-	
-	final String INTITULE_BOUTON_AJOUT ="+";
-	
-	public final  String [] HEURES = {"00", "01", "02", "03", "04", "05", "06",
-		"07", "08", "09", "10", "11", "12", "13",
-		"14", "15", "16", "17", "18", "19", "20",
-		"21", "22", "23"};
-	public final  String [] MINUTES = {"00", "15", "30", "45"};
-	
 }

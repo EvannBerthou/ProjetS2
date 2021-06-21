@@ -13,6 +13,11 @@ import java.util.Calendar;
  */
 public class Date implements Comparable <Date>, ConstantesCalendrier, Serializable {
 	/**
+	 * Le serialVersionUID
+	 */
+	private static final long serialVersionUID = 5157598511773634423L;
+
+	/**
 	 * Jour de la date
 	 */
 	private int jour;
@@ -181,6 +186,10 @@ public class Date implements Comparable <Date>, ConstantesCalendrier, Serializab
 		return  JOURS_SEMAINE [jourSemaine -1] + " " + jour + " " + MOIS [mois-1];	  
 	}  
 	
+	/**
+	 * Renvoie la version courte de toString
+	 * @return version courte de toString
+	 */
 	public String toShortString() {
 		return JOURS_SEMAINE_ABR[jourSemaine - 1] + " " + jour + " " + MOIS[mois-1];
 	}

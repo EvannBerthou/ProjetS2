@@ -12,8 +12,18 @@ import javax.swing.JOptionPane;
 
 import constantes.ConstantesPort;
 
+/**
+ * Fenêtre mère de l'application
+ * @author Evann Berthou
+ *
+ */
 public class Client extends JFrame implements ActionListener {
 	
+	/**
+	 * Le serialVersionUID
+	 */
+	private static final long serialVersionUID = -7409557890286668784L;
+
 	/**
 	 * Constructeur du Client
 	 */
