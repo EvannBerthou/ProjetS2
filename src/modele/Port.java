@@ -8,12 +8,12 @@ public class Port implements Serializable {
 	private HashMap<Date, Maree[]> mareesCoefs = new HashMap<Date, Maree[]>();
 	private HashMap<Date, Maree[]> mareesHauteurs = new HashMap<Date, Maree[]>();
 	
-	public void setCoefs(HashMap<Date, Maree[]> marees) {
-		this.mareesCoefs = marees;
+	public void addCoefs(HashMap<Date, Maree[]> marees) {
+		mareesCoefs.putAll(marees);
 	}
 	
-	public void setHauteurs(HashMap<Date, Maree[]> marees) {
-		this.mareesHauteurs = marees;
+	public void addHauteurs(HashMap<Date, Maree[]> marees) {
+		mareesHauteurs.putAll(marees);
 	}
 	
 	public Maree[] getCoefsDate(Date date) {

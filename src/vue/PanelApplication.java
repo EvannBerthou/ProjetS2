@@ -63,8 +63,13 @@ public class PanelApplication extends JPanel {
 			
 			HashMap<Date, Maree[]> marees = LectureFichier.lectureMareeDate(fichier);
 			
-			Port port = new Port();
-			port.setCoefs(marees);
+			Port port;
+			if (ports.containsKey(nomPort)) {
+				port = ports.get(nomPort);
+			} else {
+				port = new Port();
+			}
+			port.addCoefs(marees);
 			ports.put(nomPort, port);
 		}
 		
@@ -82,7 +87,7 @@ public class PanelApplication extends JPanel {
 			} else {
 				port = new Port();
 			}
-			port.setHauteurs(marees);
+			port.addHauteurs(marees);
 			ports.put(nomPort, port);
 		}
 		LectureFichier.ecriture(new File(ConstantesPort.CHEMIN_FICHIER), ports);
