@@ -47,10 +47,7 @@ public class Port implements Serializable {
 	 * @return La liste des marées
 	 */
 	public Maree[] getCoefsDate(Date date) {
-		for (Date d : mareesCoefs.keySet()) {
-			if (d.equals(date)) return mareesCoefs.get(d);
-		}
-		return null;
+		return mareesCoefs.get(date);
 	}
 
 	/**
@@ -59,10 +56,7 @@ public class Port implements Serializable {
 	 * @return La liste des marées
 	 */
 	public Maree[] getHauteursDate(Date date) {
-		for (Date d : mareesHauteurs.keySet()) {
-			if (d.equals(date)) return mareesHauteurs.get(d);
-		}
-		return null;
+		return mareesHauteurs.get(date);
 	}
 
 	/**
@@ -71,14 +65,8 @@ public class Port implements Serializable {
 	 */
 	public HashSet<Date> getDates() {
 		HashSet<Date> dates = new HashSet<Date>();
-		for (Date d : mareesCoefs.keySet()) {
-			dates.add(d);
-		}
-		
-		for (Date d : mareesHauteurs.keySet()) {
-			dates.add(d);
-		}
-		
+		dates.addAll(mareesCoefs.keySet());
+		dates.addAll(mareesHauteurs.keySet());
 		return dates;
 	}
 }
