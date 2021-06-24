@@ -30,6 +30,10 @@ public class PanelApplication extends JPanel {
 	 */
 	private ListePort ports = new ListePort();
 	
+	private PanelTableaux panelTableaux;
+	
+	private PanelListePorts panelListePorts;
+	
 	/**
 	 * Constructeur du panel
 	 */
@@ -43,15 +47,22 @@ public class PanelApplication extends JPanel {
 		PanelCalendrier panelCalendrier = new PanelCalendrier();
 		panelCentre.add(panelCalendrier, BorderLayout.CENTER);
 		
-		PanelTableaux panelSud = new PanelTableaux(ports);
-		panelCentre.add(panelSud, BorderLayout.SOUTH);
+		panelTableaux = new PanelTableaux(ports);
+		panelCentre.add(panelTableaux, BorderLayout.SOUTH);
 		
-		PanelListePorts panelListePorts = new PanelListePorts(ports.keySet());
+		panelListePorts = new PanelListePorts(ports.keySet());
 
 		add(panelCentre, BorderLayout.CENTER);
 		add(panelListePorts, BorderLayout.WEST);
 		
-		new Controleur(panelSud, panelListePorts, panelCalendrier);
+		new Controleur(panelTableaux, panelListePorts, panelCalendrier);
+	}
+	
+	public void actualiserDonnes() {
+		ports = new ListePort();
+		chargerPorts();
+		panelTableaux.setPorts(ports);
+		panelListePorts.setPorts(ports.keySet());
 	}
 
 	/**
@@ -70,7 +81,6 @@ public class PanelApplication extends JPanel {
 		dossier = new File("data/payant");
 		for (File fichier : dossier.listFiles()) {
 			String nomPort = LectureFichier.getNomPort(fichier);
-			
 			HashMap<Date, Maree[]> marees = LectureFichier.lectureMareeDate(fichier);
 			
 			Port port;

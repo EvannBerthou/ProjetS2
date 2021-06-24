@@ -56,7 +56,7 @@ public class PanelTableaux extends JPanel {
 		this.port = _port;
 		changerTableaux();
 	}
-	
+
 	/** 
 	 * Change la date selectionné
 	 * @param _date La date du calendrier
@@ -65,7 +65,7 @@ public class PanelTableaux extends JPanel {
 		this.date = _date;
 		changerTableaux();
 	}
-	
+
 	/**
 	 * Change les informations du tableaux en fonction de la date et du nom du port
 	 */
@@ -96,5 +96,10 @@ public class PanelTableaux extends JPanel {
 	 */
 	public Port getPort(String nom) {
 		return ports.get(nom);
+	}
+	
+	public void setPorts(ListePort _ports) {
+		this.ports = _ports;
+		
 	}
 }

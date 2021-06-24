@@ -30,7 +30,7 @@ public class PanelListePorts extends JPanel {
 	/**
 	 * Le nom des ports
 	 */
-	private final String[] ports;
+	private String[] ports;
 	
 	/**
 	 * La JList des portsd
@@ -85,5 +85,13 @@ public class PanelListePorts extends JPanel {
 	 */
 	public void enrengistrerEcoute(Controleur controleur) {
 		listePorts.addListSelectionListener(controleur);
+	}
+
+	public void setPorts(Set<String> nomPorts) {
+		this.ports = nomPorts.toArray(new String[0]);
+		DefaultListModel model = new DefaultListModel();
+		for (String s : nomPorts) 
+			model.addElement(s);
+		listePorts.setModel(model);
 	}
 }
