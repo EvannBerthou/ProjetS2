@@ -30,8 +30,14 @@ public class PanelApplication extends JPanel {
 	 */
 	private ListePort ports = new ListePort();
 	
+	/**
+	 * Le PanelTableaux
+	 */
 	private PanelTableaux panelTableaux;
 	
+	/**
+	 * Le PanelListePorts
+	 */
 	private PanelListePorts panelListePorts;
 	
 	/**
@@ -58,6 +64,9 @@ public class PanelApplication extends JPanel {
 		new Controleur(panelTableaux, panelListePorts, panelCalendrier);
 	}
 	
+	/**
+	 * Recharge les données après que l'application soit lancé pour la première fois
+	 */
 	public void actualiserDonnes() {
 		ports = new ListePort();
 		chargerPorts();

@@ -87,6 +87,10 @@ public class PanelListePorts extends JPanel {
 		listePorts.addListSelectionListener(controleur);
 	}
 
+	/**
+	 * Change la liste des ports
+	 * @param nomPorts La liste du nom des ports
+	 */
 	public void setPorts(Set<String> nomPorts) {
 		this.ports = nomPorts.toArray(new String[0]);
 		DefaultListModel model = new DefaultListModel();

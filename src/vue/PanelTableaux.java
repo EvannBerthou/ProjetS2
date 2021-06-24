@@ -98,6 +98,10 @@ public class PanelTableaux extends JPanel {
 		return ports.get(nom);
 	}
 	
+	/**
+	 * Change la liste des ports
+	 * @param _ports Le ListePort à mettre
+	 */
 	public void setPorts(ListePort _ports) {
 		this.ports = _ports;
 		

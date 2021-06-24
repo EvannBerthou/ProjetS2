@@ -24,6 +24,9 @@ public class Client extends JFrame implements ActionListener {
 	 */
 	private static final long serialVersionUID = -7409557890286668784L;
 
+	/**
+	 * Le PanelApplication
+	 */
 	private PanelApplication application;
 	
 	/**
